@@ -15,13 +15,13 @@ You must download the following in order to use this handler:
 Installation and Usage
 ----------------------
 
-I recommend extracting the necessary files from the projects above to a temporary location, then copying the required files to your ~/Scripts folder. However, you can change the default folder by modifying two lines in the handler. All of the information about which json and .js files are necessary from the CLDR data and Globalize (respectively) can be found in the [jquery/globalize](https://github.com/jquery/globalize) README.
+I recommend extracting the necessary files from the requirements above to a temporary location, then copying the required files to your ~/Scripts folder. However, you can change the default folder by modifying two lines in the handler. All of the information about which json and .js files are necessary from the CLDR data and Globalize (respectively) can be found in the [jquery/globalize](https://github.com/jquery/globalize) README.
 
-You will need to include a pretty big list of files to make Globalize work but some of them are optional. See the [jquery/globalize](https://github.com/jquery/globalize) README for details about which files are required for which functions. *Prior to any of these, you should include jQuery*. It is included by default in new ASP.NET WebForms projects in Visual Studio 2013 when targeting .NET 4.5+. Here is an example of how you could include them in the ScriptManager in ASP.NET 4.5+:
+You will need to include a pretty big list of files to make Globalize work but some of them are optional. See the [jquery/globalize](https://github.com/jquery/globalize) README for details about which files are required for which functions. *Prior to any of these, you should include jQuery*. jQuery is included by default in new ASP.NET WebForms projects in Visual Studio 2013 when targeting .NET 4.5+. Here is an example of how you could include the required scripts for Globalize in the ScriptManager in ASP.NET 4.5+:
 
 	<asp:ScriptManager runat="server">
 		<Scripts>
-			<%-- Default set of scripts, including jQuery --%>
+			<%-- Default set of scripts, including jQuery, go here. --%>
 			<asp:ScriptReference Path="~/Scripts/cldr.js" />
 			<asp:ScriptReference Path="~/Scripts/cldr/event.js" />
 			<asp:ScriptReference Path="~/Scripts/cldr/supplemental.js" />
@@ -36,7 +36,7 @@ You will need to include a pretty big list of files to make Globalize work but s
 		</Scripts>
 	</ScriptManager>
 	
-If you're targeting an older version of .NET, here is a group of script tags that will do the same:
+If you're targeting an older version of .NET or don't use the ScriptManager, here is a group of script tags that will do the same:
 
 	<head runat="server">
 		<!-- Make sure to include jQuery before this list. -->
@@ -53,4 +53,4 @@ If you're targeting an older version of .NET, here is a group of script tags tha
 		<script type="text/javascript" src="~/Scripts/GlobalizeBuilder.ashx"></script>
 	</head>
 	
-When all features are implemented and all CLDR data are used, the script weighs in at around 385KB. Some client-side caching settings are included to help with bandwidth and page load times but refreshing the page will re-download the contents of the script. Server-side caching of the output of the script would likely also help.
+When all features are implemented and all CLDR data are used, the output of the handler weighs in at around 385KB. Some client-side caching settings are included to help with bandwidth and page load times but refreshing the page will re-download the contents of the script. Server-side caching of the output of the script would likely also help.
