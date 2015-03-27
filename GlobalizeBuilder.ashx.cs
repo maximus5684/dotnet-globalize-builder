@@ -21,7 +21,7 @@ namespace dotnet_globalize_builder
 
             context.Response.ContentType = "application/javascript";
             
-            //Client-side cahcing help.
+            //Client-side caching help.
             context.Response.Cache.SetCacheability(HttpCacheability.Public);
             context.Response.Cache.SetExpires(DateTime.Now.AddMinutes(30));
             context.Response.Cache.SetMaxAge(new TimeSpan(0, 30, 0));
@@ -59,6 +59,8 @@ namespace dotnet_globalize_builder
                 }
             }
 
+			//Before removing any of these, make sure you remove the associated .js files from your HTML.
+			//See the README at https://github.com/jquery/globalize for dependency details.
             context.Response.Write("var gCurrencies = " + File.ReadAllText(mainPath + lang + "/currencies.json"));
             context.Response.Write("var gCalendar = " + File.ReadAllText(mainPath + lang + "/ca-gregorian.json"));
             context.Response.Write("var gTimeZoneNames = " + File.ReadAllText(mainPath + lang + "/timeZoneNames.json"));
